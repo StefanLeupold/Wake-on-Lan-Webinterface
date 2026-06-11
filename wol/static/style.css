@@ -2,35 +2,29 @@
 
 body {
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-    background-color: #f4f4f4; /* Light Gray */
-    color: #333; /* Dark Gray */
+    background-color: #eef2f7; /* Soft Blue-Gray */
+    color: #3a4554; /* Slate */
     margin: 0;
 }
 
 .container {
     max-width: 800px;
-    margin: 0 auto;
+    margin: 40px auto;
+    padding: 0 20px;
 }
 
 h2 {
-    color: #333; /* Dark Gray */
+    color: #3a4554; /* Slate */
+    margin-top: 0;
 }
 
 h1 {
     color: #fff; /* White */
-}
-
-ul {
-    list-style-type: none;
-    padding: 0;
-}
-
-li {
-    margin-bottom: 10px;
+    margin: 0;
 }
 
 a {
-    color: #333; /* Dark Gray */
+    color: #3a4554; /* Slate */
     text-decoration: none;
 }
 
@@ -39,70 +33,134 @@ a:hover {
 }
 
 form {
-    margin-top: 20px;
+    margin-top: 10px;
 }
 
 label {
     display: block;
     margin-bottom: 5px;
-    color: #333; /* Dark Gray */
+    color: #3a4554; /* Slate */
 }
 
 input[type="text"] {
     padding: 8px;
-    border: 1px solid #ccc; /* Light Gray */
-    border-radius: 4px;
+    border: 1px solid #d3dce6; /* Light Blue-Gray */
+    border-radius: 6px;
     background-color: #ffffff; /* White */
-    color: #333; /* Dark Gray */
+    color: #3a4554; /* Slate */
+}
+
+input[type="text"]:focus {
+    outline: none;
+    border-color: #5b9bd5; /* Accent Blue */
 }
 
 button {
-    padding: 10px;
-    background-color: #333; /* Dark Gray */
+    padding: 10px 16px;
+    background-color: #5b9bd5; /* Accent Blue */
     color: #ffffff; /* White */
     border: none;
-    border-radius: 4px;
+    border-radius: 6px;
     cursor: pointer;
+    font-size: 14px;
+    transition: background-color 0.2s ease;
 }
 
 button:hover {
-    background-color: #555; /* Darker Gray */
+    background-color: #4a86c0; /* Darker Accent Blue */
 }
 
-/* Add Dark Mode Toggle if needed */
-/* Include any other styles for dark mode if required */
-
 .banner {
-    background-color: #555; /* Darker Gray */
-    padding: 20px;
+    background-color: #5b9bd5; /* Accent Blue */
+    padding: 24px;
     text-align: center;
+    border-radius: 10px;
+    margin-bottom: 20px;
+}
+
+.devices {
+    background-color: #ffffff; /* White */
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.06);
 }
 
 .devices-table {
     width: 100%;
     border-collapse: collapse;
-    margin-top: 20px;
+    margin-top: 15px;
 }
 
 .devices-table th, .devices-table td {
-    border: 1px solid #ccc; /* Light Gray */
-    padding: 10px;
+    border-bottom: 1px solid #e6ebf1; /* Light Blue-Gray */
+    padding: 12px 10px;
     text-align: left;
 }
 
 .devices-table th {
-    background-color: #333; /* Dark Gray */
-    color: #ffffff; /* White */
+    background-color: #f4f7fb; /* Very Light Blue */
+    color: #5b6b7d; /* Muted Slate */
+    font-weight: 600;
+    text-transform: uppercase;
+    font-size: 12px;
+    letter-spacing: 0.5px;
+}
+
+.devices-table tr:last-child td {
+    border-bottom: none;
+}
+
+.devices-table tr:hover td {
+    background-color: #f9fbfd; /* Hover Highlight */
+}
+
+.devices-table td .wake-link button,
+.devices-table td .delete-link button {
+    margin-right: 5px;
+}
+
+.delete-button {
+    background-color: #e08a8a; /* Soft Red */
+}
+
+.delete-button:hover {
+    background-color: #d46a6a; /* Darker Soft Red */
 }
 
 .add-device {
-    text-align: center;
+    margin-top: 20px;
+    background-color: #ffffff; /* White */
+    border-radius: 10px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.06);
+    padding: 5px 20px;
+}
+
+.add-device summary {
+    cursor: pointer;
+    font-weight: 600;
+    color: #5b6b7d; /* Muted Slate */
+    padding: 12px 0;
+    list-style: none;
+}
+
+.add-device summary::-webkit-details-marker {
+    display: none;
+}
+
+.add-device summary::before {
+    content: '+ ';
+    color: #5b9bd5; /* Accent Blue */
+}
+
+.add-device[open] summary::before {
+    content: '\2212 '; /* Minus sign */
 }
 
 .add-device form {
     display: flex;
     flex-direction: column;
     align-items: center;
+    padding-bottom: 20px;
 }
 
 .add-device form label {
@@ -110,18 +168,19 @@ button:hover {
 }
 
 .add-device form input[type="text"] {
-    width: 30%;
+    width: 40%;
     padding: 8px;
     margin-bottom: 10px;
 }
 
 .add-device form button {
-    width: 30%;
+    width: 40%;
+    margin-top: 10px;
 }
 
 .status-dot {
-    width: 15px;
-    height: 15px;
+    width: 14px;
+    height: 14px;
     border-radius: 50%;
     display: flex;
     align-items: center;
@@ -130,11 +189,9 @@ button:hover {
 }
 
 .green {
-    background-color: #00AD25; /* Green */
-    align-items: center;
+    background-color: #4caf50; /* Green */
 }
 
 .red {
-    background-color: #CE0000; /* Red */
-    align-items: center;
+    background-color: #e74c3c; /* Red */
 }

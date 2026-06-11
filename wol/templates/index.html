@@ -15,19 +15,6 @@
             <h1>Wake on LAN</h1>
         </div>
 
-        <div class="add-device">
-            <h2>Add Device</h2>
-            <form action="{{ url_for('add_device') }}" method="post">
-                <label for="name">Name:</label>
-                <input type="text" name="name" required>
-                <label for="mac">MAC Address:</label>
-                <input type="text" name="mac" required>
-                <label for="ip">IP Address:</label>
-                <input type="text" name="ip" required>
-                <button type="submit">Add Device</button>
-            </form>
-        </div>
-
         <div class="devices">
             <h2>Devices</h2>
             <table class="devices-table">
@@ -53,8 +40,8 @@
                                 {% endif %}
                             </td>
                             <td>
-                                <a href="{{ url_for('wake_up', device_id=index) }}"><button>Wake up</button></a>
-                                <a href="{{ url_for('delete_device', device_id=index) }}" class="delete-link" onclick="return confirm('Are you sure you want to delete \'{{ device['name'] }}\'?');"><button>Delete</button></a>
+                                <a href="{{ url_for('wake_up', device_id=index) }}" class="wake-link"><button>Wake up</button></a>
+                                <a href="{{ url_for('delete_device', device_id=index) }}" class="delete-link" onclick="return confirm('Are you sure you want to delete \'{{ device.name }}\'?');"><button class="delete-button">Delete</button></a>
                                 <!-- Add a link to an edit page if needed -->
                             </td>
                         </tr>
@@ -62,6 +49,19 @@
                 </tbody>
             </table>
         </div>
+
+        <details class="add-device">
+            <summary>Add Device</summary>
+            <form action="{{ url_for('add_device') }}" method="post">
+                <label for="name">Name:</label>
+                <input type="text" name="name" required>
+                <label for="mac">MAC Address:</label>
+                <input type="text" name="mac" required>
+                <label for="ip">IP Address:</label>
+                <input type="text" name="ip" required>
+                <button type="submit">Add Device</button>
+            </form>
+        </details>
     </div>
 </body>
 </html>
