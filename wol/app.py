@@ -1,7 +1,8 @@
 from flask import Flask, render_template, request, redirect, url_for
 from wakeonlan import send_magic_packet
 import json
-import socket
+import platform
+import subprocess
 
 app = Flask(__name__)
 
@@ -14,16 +15,16 @@ except FileNotFoundError:
 
 # Function to check the status of a device
 def check_device_status(device):
-    try:
-        # Check if both 'ip' and 'mac' are present in the device record
-        if 'ip' in device and 'mac' in device:
-            # Try to open a socket to check the device's status
-            sock = socket.create_connection((device['ip'], 8006), timeout=2)
-            sock.close()
-            return True  # The computer is reachable
-    except (socket.timeout, ConnectionRefusedError):
-        return False  # The computer is not reachable
-    return False  # If 'ip' or 'mac' is not present in the device record
+    if 'ip' in device:
+        param = "-n" if platform.system().lower() == "windows" else "-c"
+        ping = subprocess.run(
+            ["ping", param, "1", "-w", "1000", device['ip']],
+            stdout=subprocess.DEVNULL,
+            stderr=subprocess.DEVNULL
+        )
+        if ping.returncode == 0:
+            return True
+    return False
 
 # Main page
 @app.route('/')
