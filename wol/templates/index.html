@@ -54,7 +54,7 @@
                             </td>
                             <td>
                                 <a href="{{ url_for('wake_up', device_id=index) }}"><button>Wake up</button></a>
-                                <a href="{{ url_for('delete_device', device_id=index) }}" class="delete-link"><button>Delete</button></a>
+                                <a href="{{ url_for('delete_device', device_id=index) }}" class="delete-link" onclick="return confirm('Are you sure you want to delete \'{{ device['name'] }}\'?');"><button>Delete</button></a>
                                 <!-- Add a link to an edit page if needed -->
                             </td>
                         </tr>
